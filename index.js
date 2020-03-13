@@ -111,8 +111,14 @@ function processSum(num1, num2, callback) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
  */
-function processProduct(/* CODE HERE */) {
+function processProduct(num1, num2, callback) {
   /* CODE HERE */
+  const num = num1 * num2;
+  if (num === 0) {
+    return callback(0);
+  } else {
+    return callback(num);
+  }
 }
 
 /**
