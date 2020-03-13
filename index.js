@@ -215,8 +215,9 @@ function isItAnApple(strings) {
  *
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
  */
-function removeApple(/* code here */) {
+function removeApple(strings) {
   /* code here */
+  return strings.filter(string => string.toLowerCase() === "apple");
 }
 
 /**
@@ -234,8 +235,9 @@ function removeApple(/* code here */) {
  *
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
  */
-function stringSmash(/* code here */) {
+function stringSmash(strings) {
   /* code here */
+  return strings.reduce((newString, string) => (newString += string));
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -253,8 +255,11 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
  */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+  return runners.map(runner => {
+    return `${runner.last_name}, ${runner.first_name}`;
+  });
 }
 
 /**
@@ -269,8 +274,11 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
  */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  return runners.map(runner => {
+    return runner.first_name.toUpperCase();
+  });
 }
 
 /**
@@ -287,8 +295,9 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
  */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
+  return runners.filter(runner => runner.shirt_size === tShirtSize);
 }
 
 /**
@@ -302,10 +311,16 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
  */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(runners) {
   /* CODE HERE */
+  if (runners === []) {
+    return 0;
+  } else {
+    return runners.reduce((total, runner) => {
+      return (total += runner.donation);
+    }, 0);
+  }
 }
-
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
 
@@ -317,9 +332,15 @@ function tallyUpDonations(/* CODE HERE */) {
  *
  * 1. What is the difference between counter1 and counter2?
  *
+ * Counter one is a closure
+ *
  * 2. Which of the two uses a closure? How can you tell?
  *
+ * Counter one: because it returns a function
+ *
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ *
+ * if you don't want to allow people to manipulate the variable outside of the function call.
  *
  */
 
@@ -361,8 +382,17 @@ function counter2() {
  * counter() // should return 0
  * etc
  */
-function counterMakerWithLimit(/* CODE HERE */) {
+function counterMakerWithLimit(limit) {
   /* CODE HERE */
+  let count = 0;
+  return function counter() {
+    if (count <= limit) {
+      return count++;
+    } else {
+      count = 0;
+      return count++;
+    }
+  };
 }
 
 /////////////// END OF CHALLENGE ///////////////
