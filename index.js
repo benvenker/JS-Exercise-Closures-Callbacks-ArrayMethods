@@ -139,8 +139,17 @@ function processProduct(num1, num2, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
  */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+  let uniques = [];
+  list.map(el => {
+    if (!uniques.includes(el)) {
+      uniques.push(el);
+    } else {
+      return;
+    }
+  });
+  return callback(uniques);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -161,8 +170,13 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  *
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
  */
-function lowerCaseStrings(/* code here */) {
+function lowerCaseStrings(arr) {
   /* code here */
+  const lowerArr = [];
+  arr.forEach(string => {
+    lowerArr.push(string.toLowerCase());
+  });
+  return lowerArr;
 }
 
 /**
