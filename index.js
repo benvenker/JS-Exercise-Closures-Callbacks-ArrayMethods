@@ -217,7 +217,7 @@ function isItAnApple(strings) {
  */
 function removeApple(strings) {
   /* code here */
-  return strings.filter(string => string.toLowerCase() === "apple");
+  return strings.filter(string => string !== "apple");
 }
 
 /**
