@@ -170,10 +170,10 @@ function processDuplicateFree(list, callback) {
  *
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
  */
-function lowerCaseStrings(arr) {
+function lowerCaseStrings(strings) {
   /* code here */
   const lowerArr = [];
-  arr.forEach(string => {
+  strings.forEach(string => {
     lowerArr.push(string.toLowerCase());
   });
   return lowerArr;
@@ -194,8 +194,9 @@ function lowerCaseStrings(arr) {
  *
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
  */
-function isItAnApple(/* code here */) {
+function isItAnApple(strings) {
   /* code here */
+  return strings.map(string => string === "apple");
 }
 
 /**
